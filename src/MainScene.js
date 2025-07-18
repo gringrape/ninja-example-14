@@ -1,5 +1,6 @@
 import { tileTypes, mapData } from './mapData.js';
 import { FacilityManager, FACILITY_TYPES } from './FacilityManager.js';
+import { GameLogic } from './GameLogic.js';
 
 // 맵 중앙 좌표
 const MAP_CENTER_X = 400;
@@ -25,6 +26,10 @@ export default class MainScene extends Phaser.Scene {
     this.cameras.main.setBackgroundColor(SCENE_BACKGROUND_COLOR);
     
     this.load.image('floor', 'assets/floor.png');
+    this.load.image('student-front', 'assets/student-front.png');
+    this.load.image('student-back', 'assets/student-back.png');
+    this.load.image('student-left', 'assets/student-left.png');
+    this.load.image('student-right', 'assets/student-right.png');
     
     FacilityManager.loadAssets(this);
   }
@@ -32,17 +37,24 @@ export default class MainScene extends Phaser.Scene {
   create() {
     this.renderMap();
     this.initFacilities();
+    this.startGame();
+  }
+  
+  startGame() {
+    // 게임 로직 초기화
+    this.gameLogic = new GameLogic(this);
+    
+    // 학생 시뮬레이션 시작
+    this.gameLogic.startStudentSimulation();
   }
   
   initFacilities() {
     this.facilityManager = new FacilityManager(this);
     
-    // 테이블 배치 (몇 개 예시)
-    this.facilityManager.addFacility(2, 2, FACILITY_TYPES.TABLE);
     this.facilityManager.addFacility(5, 3, FACILITY_TYPES.TABLE);
-    this.facilityManager.addFacility(7, 6, FACILITY_TYPES.TABLE);
+    this.facilityManager.addFacility(6, 3, FACILITY_TYPES.CHAIR);
   }
-
+  
   renderMap() {
     mapData.forEach((rowData, row) => {
       rowData.forEach((tileKey, col) => {
