@@ -1,4 +1,3 @@
-// 시설 클래스
 export class Facility {
   constructor(scene, x, y, type) {
     this.scene = scene;
@@ -16,7 +15,7 @@ export class Facility {
     const screenY = isoPos.y + this.scene.MAP_CENTER_Y;
     
     this.sprite = this.scene.add.image(screenX, screenY, this.type);
-    this.sprite.setDisplaySize(60, 60); // 타일 사이즈와 동일
+    this.sprite.setDisplaySize(60, 60);
   }
   
   destroy() {
@@ -24,6 +23,8 @@ export class Facility {
       this.sprite.destroy();
       this.sprite = null;
     }
+    
+    this.scene = null;
   }
 }
 

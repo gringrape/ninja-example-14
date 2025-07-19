@@ -1,4 +1,4 @@
-import { Facility } from './Facility.js';
+import { Facility } from '../Facility.js';
 
 // 시설 타입 정의
 export const FACILITY_TYPES = {
@@ -36,24 +36,5 @@ export class FacilityManager {
     const facility = new Facility(this.scene, x, y, type);
     this.facilities.push(facility);
     return facility;
-  }
-  
-  removeFacility(facility) {
-    const index = this.facilities.indexOf(facility);
-    if (index > -1) {
-      this.facilities.splice(index, 1);
-      facility.destroy();
-    }
-  }
-  
-  getFacilitiesAt(x, y) {
-    return this.facilities.filter(facility => 
-      facility.gridX === x && facility.gridY === y
-    );
-  }
-  
-  clearAll() {
-    this.facilities.forEach(facility => facility.destroy());
-    this.facilities = [];
   }
 } 
