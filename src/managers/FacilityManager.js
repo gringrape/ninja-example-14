@@ -2,20 +2,10 @@ import { Facility } from '../Facility.js';
 
 // 시설 타입 정의
 export const FACILITY_TYPES = {
-  TABLE: 'table',
-  CHAIR: 'chair'
 };
 
 // 시설 에셋 정보
 export const FACILITY_ASSETS = {
-  [FACILITY_TYPES.TABLE]: {
-    key: 'table',
-    path: 'assets/table.png'
-  },
-  [FACILITY_TYPES.CHAIR]: {
-    key: 'chair', 
-    path: 'assets/chair.png'
-  }
 };
 
 // 시설 관리자 클래스

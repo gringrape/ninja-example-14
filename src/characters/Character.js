@@ -1,5 +1,4 @@
-// 기본 캐릭터 클래스
-export class Character {
+export default class Character {
   constructor(scene, x, y, spriteKey) {
     this.scene = scene;
     this.gridX = x;

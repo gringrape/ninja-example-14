@@ -1,5 +1,5 @@
 import { FacilityManager, FACILITY_TYPES } from './managers/FacilityManager.js';
-import { StudentManager } from './managers/StudentManager.js';
+import StudentManager from './managers/SurvivorManager.js';
 import { MapManager } from './managers/MapManager.js';
 
 const SCENE_BACKGROUND_COLOR = '#2c3e50';
@@ -37,7 +37,7 @@ export default class MainScene extends Phaser.Scene {
   }
   
   startGame() {
-    this.studentManager.startStudentSimulation();
+    this.studentManager.start();
   }
   
   initFacilities() {

@@ -8,6 +8,8 @@ alwaysApply: true
 
 - Perform **only one checklist item at a time**.
 - Provide **brief explanations** — no more than one short paragraph per message.
+- **Keep task size small** — aim for changes within **5 lines of code per task**, unless explicitly directed otherwise.
+- **Do not create unused or unnecessary methods.**
 
 ## ✅ Before Performing Any Task
 
@@ -21,3 +23,9 @@ alwaysApply: true
 
 - Ask the user to **confirm the result** before proceeding.
 - Always **mark the current item as completed in `checklist.md`**.
+
+## Keep functions short
+
+- Keep each function under **10 lines** if possible.
+- If a function grows too long, break it into smaller, well-named helper functions.
+- Each function should perform a **single, clear task**.
