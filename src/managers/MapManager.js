@@ -3,13 +3,16 @@ import { tileTypes, mapData } from './mapData.js';
 // 맵 관련 상수
 const MAP_CENTER_X = 400;
 const MAP_CENTER_Y = 200;
-const TILE_SIZE = 60;
+const TILE_SIZE = 64;
 const ISO_TILE_HALF_WIDTH = TILE_SIZE / 2;
 const ISO_TILE_HALF_HEIGHT = TILE_SIZE / 4;
 
 // 맵 에셋 정보
 const MAP_ASSETS = [
-  { key: 'floor', path: 'assets/floor.png' }
+  { key: 'floor', path: 'assets/floor.png' },
+  { key: 'wall', path: 'assets/wall.png' },
+  { key: 'wall-right', path: 'assets/wall-right.png' },
+  { key: 'door', path: 'assets/door.png' }
 ];
 
 // 맵 관리자 클래스
@@ -41,7 +44,7 @@ export class MapManager {
     const { x, y } = this.toIsometric(col, row);
     const screenX = x + MAP_CENTER_X;
     const screenY = y + MAP_CENTER_Y;
-    this.renderTile(screenX, screenY, tileKey);
+    this.renderTile(screenX, screenY, tileKey, col, row);
   }
   
   toIsometric(x, y) {
@@ -50,11 +53,15 @@ export class MapManager {
     return { x: isoX, y: isoY };
   }
 
-  renderTile(x, y, tileKey) {
+  renderTile(x, y, tileKey, col, row) {
     const tileType = tileTypes[tileKey];
     const imageKey = tileType ? tileType.image : 'floor';
     
     const tile = this.scene.add.image(x, y, imageKey);
+    // 타일을 조금 더 크게 표시하여 경계선 제거
     tile.setDisplaySize(TILE_SIZE, TILE_SIZE);
+    
+    // 좌측과 아래쪽 타일들이 앞에 오도록 depth 설정
+    tile.setDepth(row + col * 0.1);
   }
 } 

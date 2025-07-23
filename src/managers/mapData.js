@@ -4,18 +4,20 @@ const TILE_FLOOR_COLOR = 0x90EE90;
 
 export const tileTypes = {
   W: { name: '벽', color: TILE_WALL_COLOR, walkable: false, image: 'wall' },
-  F: { name: '평지', color: TILE_FLOOR_COLOR, walkable: true, image: 'floor' }
+  R: { name: '우측벽', color: TILE_WALL_COLOR, walkable: false, image: 'wall-right' },
+  F: { name: '평지', color: TILE_FLOOR_COLOR, walkable: true, image: 'floor' },
+  D: { name: '문', color: TILE_FLOOR_COLOR, walkable: true, image: 'door' }
 };
 
 export const mapData = [
-  ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
-  ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
-  ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
-  ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
-  ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
-  ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
-  ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
-  ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
-  ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
-  ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F']
+  ['', 'R', 'R', 'D', 'R', 'R', 'R', 'R', 'R', 'R'],
+  ['W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
+  ['W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
+  ['W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
+  ['W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
+  ['W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
+  ['W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
+  ['W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
+  ['W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
+  ['W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],  
 ]; 

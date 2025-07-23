@@ -27,6 +27,9 @@ export default class MainScene extends Phaser.Scene {
     this.initFacilities();
     this.startGame();
     
+    // 애니메이션 생성
+    Survivor.createAnimations(this);
+    
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
@@ -44,8 +47,18 @@ export default class MainScene extends Phaser.Scene {
   }
   
   initFacilities() {
-    this.facilityManager.addFacility(5, 3, FACILITY_TYPES.TABLE);
-    this.facilityManager.addFacility(6, 3, FACILITY_TYPES.CHAIR);
+    // 칠판 추가 (위쪽 벽 중앙에 배치, 위치 조정 필요할 수 있음)
+    this.facilityManager.addBlackboard(0, 4);
+    
+    // 책상들을 격자 형태로 배치
+    const rows = [2, 4, 6, 8]; // 행 위치들
+    const cols = [2, 4, 6, 8]; // 열 위치들
+    
+    rows.forEach(row => {
+      cols.forEach(col => {
+        this.facilityManager.addFacility(col, row, FACILITY_TYPES.STUDENT_TABLE);
+      });
+    });
   }
   
   update() {

@@ -1,9 +1,11 @@
 export class Facility {
-  constructor(scene, x, y, type) {
+  constructor(scene, x, y, type, width = 64, height = 64) {
     this.scene = scene;
     this.gridX = x;
     this.gridY = y;
     this.type = type;
+    this.width = width;
+    this.height = height;
     this.sprite = null;
     
     this.createSprite();
@@ -15,7 +17,10 @@ export class Facility {
     const screenY = isoPos.y + this.scene.MAP_CENTER_Y;
     
     this.sprite = this.scene.add.image(screenX, screenY, this.type);
-    this.sprite.setDisplaySize(60, 60);
+    this.sprite.setDisplaySize(this.width, this.height);
+    
+    // 시설물이 타일보다 위에 나타나도록 depth 설정
+    this.sprite.setDepth(100);
   }
   
   destroy() {
